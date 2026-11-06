@@ -1,0 +1,53 @@
+<?php
+
+use Icharlin\GestionVehiculos\Models\Coche;
+use Icharlin\GestionVehiculos\Models\Moto;
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehículos registrados</title>
+</head>
+<body>
+
+    <h1>Resultado del registro de vehículos</h1>
+
+    <?php if (isset($error)): ?>
+
+        <p><?= htmlspecialchars($error) ?></p>
+
+    <?php else: ?>
+
+        <p>Vehículo recibido correctamente. Listado de vehículos:</p>
+
+        <?php foreach ($vehiculos as $vehiculo): ?>
+
+            <hr>
+
+            <h2>
+                <?= htmlspecialchars($vehiculo->getMarca()) ?>
+                <?= htmlspecialchars($vehiculo->getModelo()) ?>
+            </h2>
+
+            <p><strong>ID:</strong> <?= $vehiculo->getId() ?></p>
+            <p><strong>Marca:</strong> <?= htmlspecialchars($vehiculo->getMarca()) ?></p>
+            <p><strong>Modelo:</strong> <?= htmlspecialchars($vehiculo->getModelo()) ?></p>
+            <p><strong>Año:</strong> <?= $vehiculo->getAnio() ?></p>
+            <p><strong>Tipo:</strong> <?= htmlspecialchars($vehiculo->getTipo()) ?></p>
+
+            <?php if ($vehiculo instanceof Coche): ?>
+                <p><strong>Número de puertas:</strong> <?= $vehiculo->getPuertas() ?></p>
+            <?php elseif ($vehiculo instanceof Moto): ?>
+                <p><strong>Sidecar:</strong> <?= $vehiculo->getSidecar() ? 'Sí' : 'No' ?></p>
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+
+    <?php endif; ?>
+
+    <p><a href="index.html">Volver al inicio</a></p>
+
+</body>
+</html>

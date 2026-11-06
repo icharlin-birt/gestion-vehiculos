@@ -1,0 +1,17 @@
+{
+    "name": "icharlin/gestion-vehiculos",
+    "description": "Aplicacion web PHP para la gestion de vehiculos mediante arquitectura MVC",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Icharlin\\GestionVehiculos\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "icharlin",
+            "email": "icharlin@ikaslea.birt.eus"
+        }
+    ],
+    "require": {}
+}
